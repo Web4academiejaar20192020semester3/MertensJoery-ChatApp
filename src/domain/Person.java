@@ -1,10 +1,13 @@
 package domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -16,15 +19,22 @@ public class Person {
 	private String salt;
 	private String firstName;
 	private String lastName;
+	@JsonIgnore
 	private Role role;
+	private String status;
+	@JsonIgnore
+	private ArrayList<Person> friends = new ArrayList<>();
+
+
 
 	public Person(String userId, String password, String firstName,
-			String lastName,Role role) {
+				  String lastName, Role role) {
 		setUserId(userId);
 		setHashedPassword(password);
 		setFirstName(firstName);
 		setLastName(lastName);
 		setRole(role);
+		setStatus("Online");
 	}
 
 	public Person(String userId, String password, String salt,
@@ -38,6 +48,7 @@ public class Person {
 	}
 
 	public Person() {
+
 	}
 
 	public Role getRole() {
@@ -148,5 +159,23 @@ public class Person {
 		}
 		this.lastName = lastName;
 	}
+	public String getStatus() {
+		return status;
+	}
 
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public void addFriend(Person friend) {
+		friends.add(friend);
+	}
+
+	public ArrayList<Person> getFriends() {
+		return friends;
+	}
+
+	public void setFriends(ArrayList<Person> friends) {
+		this.friends = friends;
+	}
 }
