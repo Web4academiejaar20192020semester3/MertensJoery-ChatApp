@@ -168,7 +168,7 @@ public class Person {
 	}
 
 	public void addFriend(Person friend) {
-		friends.add(friend);
+		if(!friends.contains(friend))friends.add(friend);
 	}
 
 	public ArrayList<Person> getFriends() {

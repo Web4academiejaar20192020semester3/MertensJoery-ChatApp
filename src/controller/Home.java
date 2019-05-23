@@ -13,19 +13,19 @@ public class Home extends RequestHandler {
     @Override
     public String handleRequest(HttpServletRequest request, HttpServletResponse response) throws IOException {
         ArrayList<Topic> topics = new ArrayList<>();
-        Topic topic1=new Topic("topic1");
+        Topic topic1=new Topic("topic1",0);
         topic1.addReply(new Reply("jan","jan zijn comment", 7));
         topics.add(topic1);
-        Topic topic2=new Topic("topic2");
+        Topic topic2=new Topic("topic2",1);
         topic2.addReply(new Reply("jans","jan zijn commentses", 7));
         topics.add(topic2);
-        Topic topic3=new Topic("topic3");
+        Topic topic3=new Topic("topic3",2);
         topic3.addReply(new Reply("jand","jan zijn commentdsd", 8));
         topics.add(topic3);
-        Topic topic4=new Topic("topic4");
+        Topic topic4=new Topic("topic4",3);
         topic4.addReply(new Reply("janf","jan zijn commentfdfd", 7));
         topics.add(topic4);
-        Topic topic5=new Topic("topic5");
+        Topic topic5=new Topic("topic5",4);
         topic5.addReply(new Reply("jang","jan zijn commentdfsfg", 6));
         topics.add(topic5);
 

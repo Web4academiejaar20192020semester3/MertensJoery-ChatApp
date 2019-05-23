@@ -6,9 +6,20 @@ public class Topic {
     private String topic;
     private ArrayList<Reply> comments;
 
-    public Topic(String topic) {
+    public int getTopicId() {
+        return topicId;
+    }
+
+    public void setTopicId(int topicId) {
+        this.topicId = topicId;
+    }
+
+    private int topicId;
+
+    public Topic(String topic, int topicId) {
         setTopic(topic);
         setComments(new ArrayList<Reply>());
+        setTopicId(topicId);
 
     }
 

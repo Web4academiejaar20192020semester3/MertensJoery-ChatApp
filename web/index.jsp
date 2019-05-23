@@ -23,73 +23,68 @@
         </div>
     </c:if>
     <c:choose>
-    <c:when test="${user!=null}">
-        <p>Welcome ${user.getFirstName()}!</p>
-        <form method="post" action="Controller?action=LogOut">
-            <p>
-                <input type="submit" id="logoutbutton" value="Log Out">
-            </p>
-        </form>
-    </c:when>
-    <c:otherwise>
-        <form method="post" action="Controller?action=LogIn">
-            <p>
-                <label for="email">Your email </label>
-                <input type="text" id="email" name="email" value="jan@ucll.be">
-            </p>
-            <p>
-                <label for="password">Your password</label>
-                <input type="password" id="password" name="password" value="t">
-            </p>
-            <p>
-                <input type="submit" id="loginbutton" value="Log in">
-            </p>
-        </form>
-    </c:otherwise>
+        <c:when test="${user!=null}">
+            <p>Welcome ${user.getFirstName()}!</p>
+            <form method="post" action="Controller?action=LogOut">
+                <p>
+                    <input type="submit" id="logoutbutton" value="Log Out">
+                </p>
+            </form>
+        </c:when>
+        <c:otherwise>
+            <form method="post" action="Controller?action=LogIn">
+                <p>
+                    <label for="email">Your email </label>
+                    <input type="text" id="email" name="email" value="jan@ucll.be">
+                </p>
+                <p>
+                    <label for="password">Your password</label>
+                    <input type="password" id="password" name="password" value="t">
+                </p>
+                <p>
+                    <input type="submit" id="loginbutton" value="Log in">
+                </p>
+            </form>
+        </c:otherwise>
     </c:choose>
     <ul>
         <c:forEach var="topic" items="${topics}">
-        <li>
-            <h4>${topic.getTopic()}</h4><table>
-            <tr>
-                <th>Name</th>
-                <th>Response</th>
-                <th>Rating</th>
-            </tr>
-            <c:forEach var="reply" items="${topic.getComments()}">
+            <li>
+                <h4>${topic.getTopic()}</h4>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Response</th>
+                        <th>Rating</th>
+                    </tr>
+                    </thead>
+                    <tbody id=${topic.getTopicId()}>
 
-                <tr>
-                    <td>${reply.getName()} </td>
-                    <td>${reply.getComment()} </td>
-                    <td>${reply.getRating()} </td>
-                </tr>
+                    </tbody>
+                </table>
+                    <p>
+                        <label for="name">Your name:</label>
+                        <input type="text" id="name" name="name" value="">
+                    </p>
+                    <p>
+                        <label for="comment">Your comment:</label>
+                        <input type="text" id="comment" name="comment" value="">
+                    </p>
+                    <p>
+                        <label for="rating">Your rating:</label>
+                        <input type="number" id="rating" name="rating" value="">
+                    </p>
+                    <p>
+                        <input type="button" id="replybutton" value="add reply" onclick="sendReply(${topic.getTopicId()});">
+                    </p>
 
-            </c:forEach>
-        </table>
-            <form method="post" action="Controller?action=AddReply">
-                <p>
-                    <label for="name">Your name:</label>
-                    <input type="text" id="name" name="name" value="">
-                </p>
-                <p>
-                    <label for="comment">Your comment:</label>
-                    <input type="text" id="comment" name="comment" value="">
-                </p>
-                <p>
-                    <label for="rating">Your rating:</label>
-                    <input type="number" id="rating" name="rating" value="">
-                </p>
-                <p>
-                    <input type="text" id="topic" name="topic" value="${topic.getTopic()}" style="visibility: hidden; appearance: none; size: 0px ">
-                </p>
-                <p>
-                    <input type="submit" id="replybutton" value="add reply">
-                </p>
-            </form>
-        </li>
+
+
+            </li>
 
         </c:forEach></ul>
-
+    <script type="text/javascript" src="js/blog.js"></script>
 
 </main>
 <jsp:include page="footer.jsp">
