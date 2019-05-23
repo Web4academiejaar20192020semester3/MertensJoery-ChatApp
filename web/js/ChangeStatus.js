@@ -30,16 +30,15 @@ function getStatusData () {
             if (quoteParagraph == null) {
                 quoteParagraph = document.createElement('p');
                 quoteParagraph.id = "statusText";
-                //quoteParagraph.appendChild("Your current status is: ")
-                quoteParagraph.appendChild(document.createTextNode(status));
+                quoteParagraph.appendChild(document.createTextNode("Your current status is: "+ status));
                 quoteDiv.appendChild(quoteParagraph);
             }
             else {
+                console.log("1");
                 quoteParagraph.removeChild(quoteParagraph.childNodes[0]);
-                quoteParagraph.appendChild(document.createTextNode(status));
+                quoteParagraph.appendChild(document.createTextNode("Your current status is: "+ status));
             }
         }
     }
-    //setTimeout("getNewStatus()", 10000);
 
 }

@@ -24,8 +24,8 @@ public class Person {
 	private String status;
 	@JsonIgnore
 	private ArrayList<Person> friends = new ArrayList<>();
-
-
+	@JsonIgnore
+	private Conversation conversation;
 
 	public Person(String userId, String password, String firstName,
 				  String lastName, Role role) {
@@ -35,6 +35,7 @@ public class Person {
 		setLastName(lastName);
 		setRole(role);
 		setStatus("Online");
+		conversation= new Conversation();
 	}
 
 	public Person(String userId, String password, String salt,
@@ -45,6 +46,7 @@ public class Person {
 		setFirstName(firstName);
 		setLastName(lastName);
 		setRole(role);
+		conversation= new Conversation();
 	}
 
 	public Person() {
@@ -177,5 +179,13 @@ public class Person {
 
 	public void setFriends(ArrayList<Person> friends) {
 		this.friends = friends;
+	}
+
+	public Conversation getConversation() {
+		return conversation;
+	}
+
+	public void setConversation(Conversation conversation) {
+		this.conversation = conversation;
 	}
 }
