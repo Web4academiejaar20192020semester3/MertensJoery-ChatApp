@@ -70,9 +70,9 @@
                 <input type="button" id="statusbutton" value="Change status">
             </p>
             <div id="conversations"></div>
+            <script type="text/javascript" src="js/Chat.js"></script>
             <script type="text/javascript" src="js/FriendList.js"></script>
             <script type="text/javascript" src="js/ChangeStatus.js"></script>
-            <script type="text/javascript" src="js/Chat.js"></script>
 
         </c:when>
         <c:otherwise>

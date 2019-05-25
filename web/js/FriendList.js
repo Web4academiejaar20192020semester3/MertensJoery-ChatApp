@@ -51,9 +51,9 @@ function getFriendData() {
     }
 
     function openChat(id) {
+        sendMessage(id, "")
         $('.msg_wrap').show();
         $('.msg_box').show();
-        $('.msg_head').text(id);
         $('.msg_head').show();
     }
 

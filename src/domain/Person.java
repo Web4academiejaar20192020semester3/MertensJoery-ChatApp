@@ -53,7 +53,7 @@ public class Person {
 		setLastName(lastName);
 		setRole(role);
 		setStatus("Online");
-		conversation= new Conversation();
+		conversation= new Conversation(this,this);
 	}
 
 	public Person(String userId, String password, String salt,
@@ -64,12 +64,13 @@ public class Person {
 		setFirstName(firstName);
 		setLastName(lastName);
 		setRole(role);
+		conversation= new Conversation(this,this);
 	}
 
 	public Person() {
 
 		setStatus("Online");
-		conversation= new Conversation();
+		conversation= new Conversation(this,this);
 		setRole(Role.LID);
 	}
 
@@ -207,5 +208,8 @@ public class Person {
 
 	public void setConversation(Conversation conversation) {
 		this.conversation = conversation;
+	}
+	public String  getOtherChatter(){
+		return conversation.getOtherChatter(this).getUserId();
 	}
 }

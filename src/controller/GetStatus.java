@@ -15,7 +15,6 @@ public class GetStatus extends AsyncRequestHandler  {
     public String handleRequest (HttpServletRequest request, HttpServletResponse response) throws IOException {
         Person user = (Person) request.getSession().getAttribute("user");
         String status = user.getStatus();
-        String json = mapper.writeValueAsString(status);
-        return json;
+        return status;
     }
 }
