@@ -5,9 +5,10 @@ $(document).ready(function () {
     $('.msg_wrap').hide();
     $('.msg_box').hide();
     $('.msg_head').hide();
-  getMessages();
+    getMessages();
     $('.msgBox').hide();
 });
+
 function getMessages() {
     $.ajax({
         type: 'GET',
@@ -15,14 +16,11 @@ function getMessages() {
         success: function (response) {
             $('.msg_body').empty();
             for (var i = 0; i < response.length; i++) {
-                //var msg = $("#mgs").val();
-                //if (msg != '') {
-                    msg = response[i].sender.firstName + ": " + response[i].message;
-                    var div = $('<div></div>').text(msg);
-                    if(response[i].sender.userId != $('.msg_head').html()) $(div).addClass("msg_b");
-                    else $(div).addClass("msg_a");
-                    $('.msg_body').append(div);
-               // }
+                msg = response[i].sender.firstName + ": " + response[i].message;
+                var div = $('<div></div>').text(msg);
+                if (response[i].sender.userId != $('.msg_head').html()) $(div).addClass("msg_b");
+                else $(div).addClass("msg_a");
+                $('.msg_body').append(div);
                 $('.msg_body').scrollTop($('.msg_body')[0].scrollHeight);
             }
         },
@@ -32,6 +30,7 @@ function getMessages() {
     });
     setTimeout(getMessages, 1000);
 }
+
 $('textarea').keypress(function (e) {
     var person = $('.msg_head').text();
     var msg = $(this).val();
@@ -40,11 +39,12 @@ $('textarea').keypress(function (e) {
         $.ajax({
             type: "POST",
             url: "Controller?action=SendMessage",
+            dataType:' text',
             data: {
                 "messageTarget": person,
                 "message": msg
             },
-            success: $('textarea').val(''),
+            success: function(){$('textarea').val('')},
             error: function () {
                 alert("failed to send message")
             }

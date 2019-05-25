@@ -12,7 +12,7 @@ import java.util.List;
 
 public class SendMessage extends AsyncRequestHandler {
     @Override
-    public String handleRequest(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
         Person person = (Person) request.getSession().getAttribute("user");
 
         String message = request.getParameter("message");
@@ -29,13 +29,11 @@ public class SendMessage extends AsyncRequestHandler {
         if (person.getConversation().contains(person) && person.getConversation().contains(target)) {
             person.getConversation().addMessage(m);
             target.setConversation(person.getConversation());
-            System.out.println(1);
         } else {
             Conversation conversation = new Conversation(person, target);
             conversation.addMessage(m);
             person.setConversation(conversation);
             target.setConversation(conversation);
-            System.out.println(2);
         }
         return "";
     }
