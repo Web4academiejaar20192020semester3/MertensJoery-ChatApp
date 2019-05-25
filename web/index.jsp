@@ -45,6 +45,7 @@
                     <input type="submit" id="loginbutton" value="Log in">
                 </p>
             </form>
+            <a href="Controller?action=Register">Register here</a>
         </c:otherwise>
     </c:choose>
     <ul>

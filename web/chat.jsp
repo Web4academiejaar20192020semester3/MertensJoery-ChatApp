@@ -12,7 +12,7 @@
     <jsp:param name="title" value="Chat"/>
 </jsp:include>
 <body onload="getNewStatus();getFriends()">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="js/jquery.js"></script>
 <jsp:include page="header.jsp">
     <jsp:param name="title" value="Chat"/>
 </jsp:include>

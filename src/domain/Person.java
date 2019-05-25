@@ -26,6 +26,24 @@ public class Person {
 	private ArrayList<Person> friends = new ArrayList<>();
 	@JsonIgnore
 	private Conversation conversation;
+	private String Gender;
+	private int age;
+
+	public String getGender() {
+		return Gender;
+	}
+
+	public void setGender(String gender) {
+		Gender = gender;
+	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
 
 	public Person(String userId, String password, String firstName,
 				  String lastName, Role role) {
@@ -46,11 +64,13 @@ public class Person {
 		setFirstName(firstName);
 		setLastName(lastName);
 		setRole(role);
-		conversation= new Conversation();
 	}
 
 	public Person() {
 
+		setStatus("Online");
+		conversation= new Conversation();
+		setRole(Role.LID);
 	}
 
 	public Role getRole() {

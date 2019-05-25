@@ -6,7 +6,7 @@ import domain.PersonService;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class AddFriend extends RequestHandler {
+public class AddFriend extends AsyncRequestHandler{
     @Override
     public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
         PersonService personService = super.getPersonService();
